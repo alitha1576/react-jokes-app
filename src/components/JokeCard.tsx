@@ -1,17 +1,35 @@
 import { useState } from 'react';
 
-export default function JokeCard({ type, setup, punchline }) {
+type JokeCardProps = {
+  type: string;
+  setup: string;
+  punchline: string;
+  id: number;
+};
+
+export default function JokeCard({
+  type,
+  setup,
+  punchline,
+  id,
+}: JokeCardProps) {
   const [showPunchline, setShowPunchline] = useState(false);
+  const [buttonStyle, setButtonStyle] = useState({});
+
+  const handleClick = () => {
+    setShowPunchline(!showPunchline);
+    setButtonStyle({ display: 'none' });
+  };
 
   return (
-    <div className="card">
+    <div className="card" key={id}>
       <p className="jokeType">{type}</p>
       <h2 className="jokeSetup">{setup}</h2>
       {showPunchline && <p className="jokePunchline">{punchline}</p>}
-      <button onClick={() => setShowPunchline(!showPunchline)}>
-        {showPunchline ? 'Hide' : 'Show'}
+      <button className="showButton" style={buttonStyle} onClick={handleClick}>
+        Show
       </button>
-      <button>Save</button>
+      {/* <button className='saveButton'></button> */}
     </div>
   );
 }

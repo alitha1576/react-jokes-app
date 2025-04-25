@@ -1,3 +1,7 @@
-export default function RefreshButton({ fetchJokes }) {
-  return <button>Refresh</button>;
+export default function RefreshButton({
+  onRefresh,
+}: {
+  onRefresh: () => void;
+}) {
+  return <button className="refreshButton" onClick={onRefresh}></button>;
 }
