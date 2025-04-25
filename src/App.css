@@ -45,26 +45,25 @@ body {
   padding: 5px 5px 10px 20px;
   margin: 20px 0;
   text-align: left;
-
 }
 
 .showButton {
   border: 1px solid #595cdd;
   background-image: url('assets/icons8-eye-24.png');
   background-repeat: no-repeat;
-    background-position: right 5px bottom 50%;
-    text-align: left;
-    padding-left: 3px;
-    width: 5em;
+  background-position: right 5px bottom 50%;
+  text-align: left;
+  padding-left: 3px;
+  width: 5em;
 }
-
 
 .showButton:hover {
   background-color: #595cdd;
   color: white;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
-
 
 .refreshButton {
   border-radius: 50%;
