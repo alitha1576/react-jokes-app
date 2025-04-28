@@ -45,6 +45,7 @@ body {
   padding: 5px 5px 10px 20px;
   margin: 20px 0;
   text-align: left;
+  position: relative;
 }
 
 .showButton {
@@ -55,14 +56,13 @@ body {
   text-align: left;
   padding-left: 3px;
   width: 5em;
+  transition: all 0.3s ease;
 }
 
 .showButton:hover {
-  background-color: #595cdd;
-  color: white;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  background-color: rgb(235, 233, 233);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .refreshButton {
@@ -78,10 +78,6 @@ body {
 }
 
 .refreshButton:hover {
-  border: 1px solid white;
-}
-
-.refreshButton:hover {
   background-color: #4a50c9;
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -93,14 +89,25 @@ body {
   box-shadow: none;
 }
 
-/* .saveButton {
+.saveButton {
   background-color: white;
-    background-image: url('assets/icons8-bookmark-48.png');
-      background-size: 35px;
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 55px;
-      height: 55px;
-text-align: right;
+  background-image: url('assets/icons8-bookmark-48-2.png');
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  top: 10px;
+  left: 355px;
+  transition: all 0.3s ease;
+}
 
-} */
+.jokeType {
+  color: rgb(120, 119, 119);
+}
+
+.saveButton:hover {
+  border: none;
+  transition: none
+}
