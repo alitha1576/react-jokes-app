@@ -24,16 +24,35 @@ export default function JokeCard({
   };
 
   const handleSaveButtonClick = () => {
-    setIsSaved(prev => !prev);
-  }
+    setIsSaved((prev) => !prev);
+
+    const savedJokesString = localStorage.getItem('savedJokes');
+    const savedJokes = savedJokesString ? JSON.parse(savedJokesString) : [];
+
+    if (!isSaved) {
+      const newSavedJokes = [...savedJokes, { id, type, setup, punchline }];
+      localStorage.setItem('savedJokes', JSON.stringify(newSavedJokes));
+    } else {
+      const newSavedJokes = savedJokes.filter(
+        (joke: JokeCardProps) => joke.id !== id
+      );
+      localStorage.setItem('savedJokes', JSON.stringify(newSavedJokes));
+    }
+  };
 
   const SaveButtonStyle = {
-backgroundImage: isSaved ? "url('./src/assets/icons8-bookmark-48-3.png')" : "url('./src/assets/icons8-bookmark-48-2.png')"
-  }
+    backgroundImage: isSaved
+      ? "url('./src/assets/icons8-bookmark-48-3.png')"
+      : "url('./src/assets/icons8-bookmark-48-2.png')",
+  };
 
   return (
     <div className="card" key={id}>
-      <button className="saveButton" style={SaveButtonStyle} onClick={handleSaveButtonClick}></button>
+      <button
+        className="saveButton"
+        style={SaveButtonStyle}
+        onClick={handleSaveButtonClick}
+      ></button>
       <p className="jokeType">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
       <h2 className="jokeSetup">{setup}</h2>
       {showPunchline && <p className="jokePunchline">{punchline}</p>}
