@@ -25,17 +25,21 @@ body {
   width: 100%;
   padding: 5px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
-.tabNew {
+.tabActive {
   background-color: #595cdd;
   color: white;
-  border-radius: 10px 0 0 10px;
   cursor: pointer;
 }
 
-.tabLibrary {
-  cursor: pointer;
+.tabActiveRight {
+  border-radius: 10px 0 0 10px;
+}
+
+.tabActiveLeft {
+  border-radius: 0 10px 10px 0;
 }
 
 .card {
