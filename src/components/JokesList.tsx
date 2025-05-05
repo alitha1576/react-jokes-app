@@ -7,7 +7,12 @@ type Joke = {
   punchline: string;
 };
 
-export default function JokesList({ jokes }: { jokes: Joke[] }) {
+type JokeList = {
+  jokes: Joke[];
+  onSavedChange: () => void;
+};
+
+export default function JokesList({ jokes, onSavedChange }: JokeList) {
   return (
     <>
       {jokes.map((joke) => (
@@ -17,6 +22,7 @@ export default function JokesList({ jokes }: { jokes: Joke[] }) {
           punchline={joke.punchline}
           id={joke.id}
           key={joke.id}
+          onSavedChange={onSavedChange}
         />
       ))}
     </>

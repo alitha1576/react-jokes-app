@@ -1,7 +1,9 @@
-import { useState } from 'react';
+type HeaderProps = {
+  activeTab: 'new' | 'library';
+  setActiveTab: (tab: 'new' | 'library') => void;
+};
 
-export default function Header() {
-  const [activeTab, setActiveTab] = useState('new');
+export default function Header({ activeTab, setActiveTab }: HeaderProps) {
   return (
     <div className="headerContainer">
       <div

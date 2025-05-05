@@ -5,6 +5,7 @@ type JokeCardProps = {
   setup: string;
   punchline: string;
   id: number;
+  onSavedChange: () => void;
 };
 
 export default function JokeCard({
@@ -12,6 +13,7 @@ export default function JokeCard({
   setup,
   punchline,
   id,
+  onSavedChange,
 }: JokeCardProps) {
   const [showPunchline, setShowPunchline] = useState(false);
   const [buttonStyle, setButtonStyle] = useState({});
@@ -29,15 +31,14 @@ export default function JokeCard({
     const savedJokesString = localStorage.getItem('savedJokes');
     const savedJokes = savedJokesString ? JSON.parse(savedJokesString) : [];
 
+    let updated;
     if (!isSaved) {
-      const newSavedJokes = [...savedJokes, { id, type, setup, punchline }];
-      localStorage.setItem('savedJokes', JSON.stringify(newSavedJokes));
+      updated = [...savedJokes, { id, type, setup, punchline }];
     } else {
-      const newSavedJokes = savedJokes.filter(
-        (joke: JokeCardProps) => joke.id !== id
-      );
-      localStorage.setItem('savedJokes', JSON.stringify(newSavedJokes));
+      updated = savedJokes.filter((joke: JokeCardProps) => joke.id !== id);
     }
+    localStorage.setItem('savedJokes', JSON.stringify(updated));
+    onSavedChange();
   };
 
   const SaveButtonStyle = {
